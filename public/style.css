@@ -213,7 +213,7 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('public/hero_bg.png');
+  background-image: url('hero_bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -906,8 +906,8 @@ body {
 .about-img-main {
   width: 100%;
   aspect-ratio: 4 / 5;
-  -webkit-mask-image: url('public/shape2.png');
-  mask-image: url('public/shape2.png');
+  -webkit-mask-image: url('shape2.png');
+  mask-image: url('shape2.png');
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
@@ -1453,7 +1453,7 @@ body {
   right: -220px;
   width: 760px;
   height: 760px;
-  background: url('public/color2.png') no-repeat center/contain;
+  background: url('color2.png') no-repeat center/contain;
   opacity: 0.58;
   mix-blend-mode: screen;
   pointer-events: none;
@@ -1897,7 +1897,7 @@ body {
   bottom: -220px;
   width: 700px;
   height: 700px;
-  background: url('public/color2.png') no-repeat center/contain;
+  background: url('color2.png') no-repeat center/contain;
   opacity: 0.5;
   mix-blend-mode: screen;
   z-index: 0;
@@ -1973,7 +1973,7 @@ body {
   bottom: -140px;
   width: 520px;
   height: 520px;
-  background: url('public/color2.png') no-repeat center/contain;
+  background: url('color2.png') no-repeat center/contain;
   opacity: 0.62;
   mix-blend-mode: screen;
   pointer-events: none;
@@ -2147,7 +2147,7 @@ body {
 .video-showcase-bg {
   position: absolute;
   inset: 0;
-  background: url('public/video1.jpg') center/cover no-repeat;
+  background: url('video1.jpg') center/cover no-repeat;
   transform: scale(1.02);
 }
 
@@ -2165,7 +2165,7 @@ body {
   right: 0;
   bottom: -80px;
   height: 200px;
-  background: url('public/color2.png') center/cover no-repeat;
+  background: url('color2.png') center/cover no-repeat;
   opacity: 0.72;
   mix-blend-mode: screen;
 }
@@ -2270,7 +2270,7 @@ body {
   inset: auto 0 -190px -180px;
   width: 640px;
   height: 640px;
-  background: url('public/color2.png') no-repeat center/contain;
+  background: url('color2.png') no-repeat center/contain;
   opacity: 0.55;
   mix-blend-mode: screen;
   pointer-events: none;
@@ -2942,7 +2942,7 @@ body {
   top: -80px;
   width: 620px;
   height: 620px;
-  background: url('public/color2.png') center/contain no-repeat;
+  background: url('color2.png') center/contain no-repeat;
   opacity: 0.55;
   mix-blend-mode: screen;
   pointer-events: none;
