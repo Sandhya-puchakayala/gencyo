@@ -608,12 +608,11 @@ body {
 /* ═══════════ SERVICES SECTION ═══════════ */
 .services {
   position: relative;
-  background: #000;
-  padding: 80px 0 90px;
+  background: #000 url('services_bg.png') center/cover no-repeat;
+  padding: 100px 0;
   overflow: hidden;
 }
 
-/* Decorative dark blob – left side */
 .services-deco-left {
   position: absolute;
   left: -20px;
@@ -624,82 +623,38 @@ body {
   pointer-events: none;
 }
 
-/* Decorative right side grid pattern */
 .services-deco-right {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 0;
-  pointer-events: none;
+  display: none; /* Hide old right grid */
 }
 
-.grid-decor {
-  display: grid;
-  grid-template-columns: 80px 80px;
-  grid-template-rows: repeat(5, 80px);
-}
-
-.decor-card { width: 80px; height: 80px; }
-.dark { background: #1a1a1a; }
-.orange { background: var(--orange); }
-.bl { border-radius: 0 0 0 100%; }
-.br { border-radius: 0 0 100% 0; }
-.tl { border-radius: 100% 0 0 0; }
-.tr { border-radius: 0 100% 0 0; }
-
-/* Grid: card | divider | card | divider | card */
+/* Grid: 3-column layout */
 .services-container {
   position: relative;
   z-index: 1;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 40px;
   display: grid;
-  grid-template-columns: 1fr 2px 1fr 2px 1fr;
-  align-items: start;
-}
-
-/* Vertical orange accent dividers */
-.service-divider {
-  width: 2px;
-  background: rgba(255, 255, 255, 0.08); /* Faint gray line between cards */
-  align-self: stretch;
-  min-height: 260px;
-  position: relative;
-  margin: 0;
-}
-
-.service-divider::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -1px;
-  width: 3px;
-  height: 14px;
-  background: var(--orange);
-}
-
-.service-divider::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: -1px;
-  width: 3px;
-  height: 14px;
-  background: var(--orange);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  align-items: stretch;
 }
 
 /* Card base */
 .service-card {
-  padding: 24px 36px 32px;
+  padding: 40px 35px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  border-radius: 8px;
+  background: #0a0a0a;
+  border-radius: 24px;
   opacity: 0;
   transform: translateY(32px);
-  transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s;
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
+  position: relative;
+}
+
+.service-card:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
 }
 
 .service-card.visible {
@@ -707,20 +662,34 @@ body {
   transform: translateY(0);
 }
 
-.service-card:nth-child(1) {
-  transition-delay: 0s;
+/* Stagger card animations */
+.service-card:nth-child(2) { transition-delay: 0.1s; }
+.service-card:nth-child(3) { transition-delay: 0.2s; }
+.service-card:nth-child(4) { transition-delay: 0.3s; }
+.service-card:nth-child(5) { transition-delay: 0.4s; }
+.service-card:nth-child(6) { transition-delay: 0.5s; }
+
+/* Card Header (Dot & Number) */
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-.service-card:nth-child(3) {
-  transition-delay: 0.15s;
+.orange-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  margin-top: 15px; /* Alignment strictly next to the number baseline */
 }
 
-.service-card:nth-child(5) {
-  transition-delay: 0.3s;
-}
-
-.service-card:hover {
-  background: rgba(255, 107, 0, 0.04);
+.card-number {
+  font-size: 38px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.06); 
+  line-height: 1;
 }
 
 /* Icon */
@@ -729,52 +698,81 @@ body {
   height: 68px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: transform 0.3s;
+  justify-content: flex-start; /* Ensure left-alignment inside grid card */
+  perspective: 1000px;
+  margin-bottom: 15px;
 }
 
-.service-card:hover .service-icon {
-  transform: scale(1.08);
+.service-icon svg {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover .service-icon svg {
+  transform: rotateY(360deg);
 }
 
 /* Title */
 .service-title {
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 26px;
+  font-weight: 700;
   color: var(--white);
-  letter-spacing: -0.3px;
+  letter-spacing: -0.5px;
   line-height: 1.2;
 }
 
 /* Description */
 .service-desc {
-  font-size: 14px;
-  line-height: 1.72;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
   flex: 1;
+  margin-bottom: 5px;
 }
 
-/* Arrow icon link */
+/* Links */
 .service-link {
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 8px;
+  gap: 0;
   text-decoration: none;
-  margin-top: 6px;
-  transition: transform 0.25s;
+  transition: gap 0.4s ease, opacity 0.25s, transform 0.25s;
+  width: max-content;
+}
+
+.service-card:hover .service-link {
+  gap: 10px;
 }
 
 .service-link:hover {
-  transform: translateX(6px);
+  opacity: 0.8;
+  transform: translateX(4px);
 }
 
-.service-link--text {
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--white);
+.link-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--orange);
+  text-decoration: underline;
+  text-decoration-color: var(--orange);
+  text-underline-offset: 4px;
+  
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 0.4s ease, opacity 0.3s ease;
+}
+
+.service-card:hover .link-text {
+  max-width: 120px;
+  opacity: 1;
+}
+
+.arrow-right-icon {
+  font-size: 20px;
+  color: var(--orange);
+  display: flex;
 }
 
 /* ═══════════ RESPONSIVE – SERVICES ═══════════ */
@@ -1058,20 +1056,36 @@ body {
 
 /* Stat Card */
 .about-stat-card {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 24px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 20px 24px;
+  gap: 30px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.7s 0.4s ease, transform 0.7s 0.4s ease;
   width: 630px;
   max-width: 100%;
-  height: 150px;
+  min-height: 166px; /* accommodates the image height */
+}
+
+/* The dark background card */
+.about-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 100px; /* Offset to allow the image to hang off the left */
+  right: 0;
+  height: 130px; /* Shorter than the image */
+  background: #111; /* Dark solid/translucent bg */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  z-index: 0;
 }
 
 .about-stat-card.visible {
@@ -1080,20 +1094,25 @@ body {
 }
 
 .stat-thumb {
-  width: 120px;
-  height: 86px;
-  border-radius: 10px;
+  width: 243px;
+  height: 166px;
+  border-radius: 20px;
   overflow: hidden;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .stat-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .stat-body {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -1112,6 +1131,42 @@ body {
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.5);
   font-weight: 500;
+}
+
+/* Discover Button */
+.btn-discover {
+  display: inline-flex;
+  align-items: center;
+  background: var(--orange);
+  color: var(--white);
+  padding: 6px 6px 6px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  gap: 20px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-discover:hover {
+  transform: translateY(-3px);
+  background: #ff8c33;
+}
+
+.btn-discover .btn-arrow {
+  width: 44px;
+  height: 44px;
+  background: var(--white);
+  color: var(--orange);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.btn-discover:hover .btn-arrow {
+  transform: scale(1.05);
 }
 
 /* CTA button */
@@ -1173,7 +1228,7 @@ body {
    ═══════════════════════════════════════ */
 .services-grid {
   position: relative;
-  background: #000;
+  background: #000 url('services_bg.png') center/cover no-repeat;
   margin-top: -60px;
   padding: 100px 0 110px;
   overflow: hidden;
@@ -2304,10 +2359,11 @@ body {
 
 .why-desc {
   margin-top: 20px;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 29px;
-  line-height: 1.68;
-  max-width: 900px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.875; /* 30px */
+  max-width: 500px;
 }
 
 .why-cards {
@@ -2338,15 +2394,17 @@ body {
 
 .why-card-title {
   color: #fff;
-  font-size: 42px;
-  line-height: 1.1;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
   margin-bottom: 8px;
 }
 
 .why-card-desc {
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 21px;
-  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.875; /* 30px */
 }
 
 .why-right {
@@ -2994,6 +3052,7 @@ body {
   justify-content: center;
   background:
     radial-gradient(circle at 88% 40%, rgba(255, 255, 255, 0.08) 0, transparent 36%),
+    url('dots.png') repeat,
     #060606;
 }
 
@@ -3062,6 +3121,7 @@ body {
   top: 12px;
   left: 44px;
   width: 220px;
+  animation: capRingSpin 18s linear infinite;
 }
 
 .cap-card--orange h3,
@@ -3078,6 +3138,46 @@ body {
   width: 210px;
   display: block;
   margin-bottom: 14px;
+}
+
+@keyframes capRingSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fixed desktop layout for feature cards */
+@media (min-width: 1200px) {
+  .capabilities-container {
+    justify-content: center;
+    grid-template-columns: 800px 490px;
+    grid-auto-rows: 490px;
+    column-gap: 20px;
+    row-gap: 18px;
+  }
+
+  .cap-card--hero {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .cap-card--text {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .cap-card--orange {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .cap-card--dark {
+    grid-column: 2;
+    grid-row: 2;
+  }
 }
 
 @media (max-width: 1024px) {
