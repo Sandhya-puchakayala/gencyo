@@ -517,10 +517,18 @@ body {
     display: none;
   }
 
+  .hero-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 24px;
+    padding-left: 0;
+  }
+
   .hero-container {
     flex-direction: column;
     align-items: flex-start;
-    gap: 32px;
+    gap: 18px;
   }
 
   .hero-right {
@@ -543,9 +551,43 @@ body {
     padding: 0 20px;
   }
 
+  .nav-container {
+    gap: 10px;
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .nav-phone {
+    display: none;
+  }
+
   .hero-container {
     padding: 0 20px;
     padding-top: 72px;
+  }
+
+  .hero-heading {
+    font-size: clamp(32px, 11vw, 62px);
+    line-height: 1.04;
+    max-width: 100%;
+  }
+
+  .hero-badge {
+    width: 130px;
+    height: 130px;
+  }
+
+  .hero-right {
+    max-width: 92%;
+    padding-top: 4px;
+    gap: 14px;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .logo-text {
@@ -864,6 +906,63 @@ body {
 @media (max-width: 600px) {
   .services {
     padding: 52px 0 60px;
+  }
+}
+
+/* Hard mobile safety overrides (prevent right-side blank strip) */
+@media (max-width: 600px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  .nav-phone {
+    display: none !important;
+  }
+
+  .nav-container,
+  .hero,
+  .hero-container,
+  .hero-bottom-row,
+  .hero-right {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero {
+    min-height: 100vh;
+  }
+
+  .hero-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .hero-bottom-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding-left: 0 !important;
+    gap: 12px !important;
+  }
+
+  .hero-heading {
+    max-width: 100% !important;
+    font-size: clamp(30px, 10.5vw, 52px) !important;
+    line-height: 1.05 !important;
+  }
+
+  .hero-orange-object {
+    right: -62px !important;
+    bottom: -16px !important;
+    width: min(62vw, 250px) !important;
+  }
+
+  .hero-floating-img {
+    left: -82px !important;
+    width: 320px !important;
+    bottom: 34px !important;
   }
 }
 
